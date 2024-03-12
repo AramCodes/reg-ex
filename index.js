@@ -198,3 +198,42 @@ let quRegex = /q(?=u)/; // a q with an u. positive look ahead
 let qRegex = /q(?!t)/; // a q without a t. negative look ahead
 quit.match(quRegex); // Returns ["q"]
 noquit.match(qRegex); // Returns ["q"]
+
+let repeatStr = "regex regex";
+let repeatRegex = /(\w+)\s\1/;
+repeatRegex.test(repeatStr); // Returns true. this regex looks for a word a space followed by the same word
+repeatStr.match(repeatRegex); // Returns ["regex regex", "regex"]
+
+let repeatNum = "42 42 42";
+let reRegex = /^(\d+)\s\1\s\1$/; // look for a digit followed by a space followed by a number 3x
+let resultRe = reRegex.test(repeatNum);
+
+// regex functions include
+
+// .exec()	Executes a search for a match in a string. It returns an array of information or null on a mismatch.
+// .test()	Tests for a match in a string. It returns true or false.
+// .match()	Returns an array containing all of the matches, including capturing groups, or null if no match is found.
+// .matchAll()	Returns an iterator containing all of the matches, including capturing groups.
+// .search()	Tests for a match in a string. It returns the index of the match, or -1 if the search fails.
+// .replace()	Executes a search for a match in a string, and replaces the matched substring with a replacement substring.
+// .replaceAll()	Executes a search for all matches in a string, and replaces the matched substrings with a replacement substring.
+// .split()	Uses a regular expression or a fixed string to break a string into an array of substrings.
+
+let wrongText = "The sky is silver.";
+let silverRegex = /silver/;
+wrongText.replace(silverRegex, "blue");
+// Returns "The sky is blue."
+
+"Code Camp".replace(/(\w+)\s(\w+)/, "$2 $1");
+// Returns "Camp Code"
+
+let huhText = "This sandwich is good.";
+let fixRegex = /change/; // Change this line
+let replaceText = ""; // Change this line
+let resultF = huhText.replace(fixRegex, replaceText);
+
+// removes space at the beginning and end of a string
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s+|\s+$/g; // Change this line
+let resultz = hello.replace(wsRegex, ""); // Change this line
+console.log(resultz);
